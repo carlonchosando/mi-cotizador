@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 import Header from './Header';
 import Formulario from './Formulario';
 
@@ -6,11 +7,11 @@ function App() {
   return (
     <div className="Contenedor">
       <Header
-        titulo = 'Buscador de vehículos'
+        titulo = 'Cotizador de Seguros'
       />
 
       <div className='contenedor-formulario'>
-        <Formulario />
+        <Formulario/>
 
       </div>
 
