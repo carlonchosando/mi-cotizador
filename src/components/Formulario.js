@@ -11,18 +11,12 @@ class Formulario extends Component {
     e.preventDefault();
 
     const plan = this.planBasicoRef.current.checked ? "basico" : "completo"; 
-
-    //console.log(this.marcaRef.current.value);
-
-    
+        
     const infoAuto = {
       marca: this.marcaRef.current.value,
       year: this.yearRef.current.value,
       plan: plan,
     };
-
-    //console.log(infoAuto);
-    
 
     this.props.cotizarSeguro(infoAuto);
 
