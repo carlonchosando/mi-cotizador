@@ -7,17 +7,20 @@ class Resultado extends Component {
 
     const resultado = this.props.resultado;
 
+    const mensaje = (!resultado) ? "ingresa tu selección" : "El total es $";
+
         return (
-           <div className="gran-total">
-               <TransitionGroup component="span"       classname="resultado" >
-                  <CSSTransition
-                     classNames="resultado"
-                      key={resultado}
-                     timeout={{ enter: 500, exit: 500 }} >
-                     <span>{resultado}</span>
-                  </CSSTransition>              
-               </TransitionGroup> 
-            </div>               
+          <div className="gran-total">
+            {mensaje}
+            <TransitionGroup component="span" classname="resultado">
+              <CSSTransition
+                classNames="resultado"
+                key={resultado}
+                timeout={{ enter: 900, exit: 800 }}>
+                <span>{resultado}</span>
+              </CSSTransition>
+            </TransitionGroup>
+          </div>
         );    
   }
 }
