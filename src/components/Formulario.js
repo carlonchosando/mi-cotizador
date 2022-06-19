@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 class Formulario extends Component {
-  
   marcaRef = React.createRef();
   yearRef = React.createRef();
   planBasicoRef = React.createRef();
@@ -10,8 +9,8 @@ class Formulario extends Component {
   cotizarSeguro = (e) => {
     e.preventDefault();
 
-    const plan = this.planBasicoRef.current.checked ? "basico" : "completo"; 
-        
+    const plan = this.planBasicoRef.current.checked ? "basico" : "completo";
+
     const infoAuto = {
       marca: this.marcaRef.current.value,
       year: this.yearRef.current.value,

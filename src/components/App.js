@@ -1,71 +1,57 @@
-import React, { Component } from 'react';
-import Header from './Header';
-import Formulario from './Formulario';
-import Resumen from './Resumen';
-import {calcularMarca, obtenerDiferenciaAnio, obtenerPlan} from '../helper';
-
+import React, { Component } from "react";
+import Header from "./Header";
+import Formulario from "./Formulario";
+import Resumen from "./Resumen";
+import { calcularMarca, obtenerDiferenciaAnio, obtenerPlan } from "../helper";
+import Resultado from "./Resultado";
 
 class App extends Component {
-
   state = {
-    resultado: '',
-    datos: {}
-  }
+    resultado: " ",
+    datos: {},
+  };
 
-
-  cotizarSeguro = (datos) => {  
-     const { marca, year, plan } = datos;
+  cotizarSeguro = (datos) => {
+    const { marca, year, plan } = datos;
 
     let resultado = 2000;
 
-    //obtener la diferencia de años
     const diferencia = obtenerDiferenciaAnio(year);
-    
-     
 
-    //por cada año restar el 3% al valor del seguro
-    resultado -= ((diferencia * 3) * resultado) / 100;
-    
+    resultado -= (diferencia * 3 * resultado) / 100;
 
-    //Americano 15% si es basico 20% si es completo
-    resultado= calcularMarca(marca)*resultado;
+    resultado = calcularMarca(marca) * resultado;
 
-    // el plan del auto en basico incrementa  en 20% cobertura completa 50%
     let incrementoPlan = obtenerPlan(plan);
-    
-    //dependiendo del plan incrementar el valor del seguro
 
     resultado = parseFloat(resultado * incrementoPlan).toFixed(2);
-    
+
     const datosAuto = {
       marca: marca,
       year: year,
-      plan: plan
-    }
+      plan: plan,
+    };
 
     this.setState({
       resultado: resultado,
-      datos: datosAuto
+      datos: datosAuto,
     });
+  };
 
-  }
+  render() {
+    return (
+      <>
+        <div className="Contenedor">
+          <Header titulo="Cotizador de Seguros" />
 
-render() {
-  return (
-    <>
-      <div className="Contenedor">
-        <Header titulo="Cotizador de Seguros" />
-
-        <div className="contenedor-formulario">
-          <Formulario cotizarSeguro={this.cotizarSeguro} />
-          <Resumen 
-          datos={this.state.datos}
-          resultado={this.state.resultado}
-           />
+          <div className="contenedor-formulario">
+            <Formulario cotizarSeguro={this.cotizarSeguro} />
+            <Resumen datos={this.state.datos} />
+            <Resultado resultado={this.state.resultado} />
+          </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
   }
 }
 export default App;
