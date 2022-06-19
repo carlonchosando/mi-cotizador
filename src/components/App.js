@@ -40,7 +40,7 @@ class App extends Component {
 
   render() {
     return (
-      <>
+      
         <div className="Contenedor">
           <Header titulo="Cotizador de Seguros" />
 
@@ -50,7 +50,7 @@ class App extends Component {
             <Resultado resultado={this.state.resultado} />
           </div>
         </div>
-      </>
+      
     );
   }
 }
