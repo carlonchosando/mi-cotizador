@@ -12,7 +12,7 @@ class Resultado extends Component {
         return (
           <div className="gran-total">
             {mensaje}
-            <TransitionGroup component="span" classname="resultado">
+            <TransitionGroup component="span" className="resultado">
               <CSSTransition
                 classNames="resultado"
                 key={resultado}
